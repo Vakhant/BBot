@@ -1,0 +1,239 @@
+
+<form action="" class="calc__form">
+    <div class="calc__row">
+        <div class="calc__item">
+            <label>
+                <span>
+                    Посещаемость в месяц из Яндекс Директ
+                </span>
+                <input type="text" class="form-control input" name="yandex" placeholder="" value="5000">
+                <div class="text-info error d-none">Поле не может быть пустым</div>
+            </label>
+        </div>
+        <div class="calc__item">
+            <label>
+                <span>
+                    Средняя цена клика в Яндекс Директ
+                </span>
+                <input type="text" class="form-control input" name="priceyandex" placeholder="" value="47">
+                <div class="text-info error d-none">Поле не может быть пустым</div>
+            </label>
+        </div>
+    </div>
+    <div class="calc__row">
+        <div class="calc__item">
+            <label>
+                <span>
+                    Посещаемость в месяц из Google Реклама
+                </span>
+                <input type="text" class="form-control input" name="google" placeholder="" value="7000">
+                <div class="text-info error d-none">Поле не может быть пустым</div>
+            </label>
+        </div>
+        <div class="calc__item">
+            <label>
+                <span>
+                    Средняя цена клика в Google Реклама
+                </span>
+                <input type="text" class="form-control input" name="pricegoogle" placeholder="" value="52">
+                <div class="text-info error d-none">Поле не может быть пустым</div>
+            </label>
+        </div>
+    </div>
+    <div class="calc__row">
+        <div class="calc__item">
+            <label>
+                <span>
+                    Посещаемость в месяц из VK Реклама
+                </span>
+                <input type="text" class="form-control input" name="vk" placeholder="" value="3000">
+                <div class="text-info error d-none">Поле не может быть пустым</div>
+            </label>
+        </div>
+        <div class="calc__item">
+            <label>
+                <span>
+                    Средняя цена клика в VK Реклама
+                </span>
+                <input type="text" class="form-control input" name="pricevk" placeholder="" value="47">
+                <div class="text-info error d-none">Поле не может быть пустым</div>
+            </label>
+        </div>
+    </div>
+    <div class="calc__row calc__theme">
+        <div class="calc__item calc__item_full">
+            <label>
+                <span>
+                    Тематика сайта
+                </span>
+                <select name="theme" id="">
+                    <option value="Выберите тему">Выберите сферу деятельности</option>
+                    <option value="Реклама" data="18.4">Реклама</option>
+                    <option value="Услуги" data="21.7">Услуги</option>
+                    <option value="Ecommerce / online retail" data="24.3">Ecommerce / online retail</option>
+                    <option value="Образование" data="14.1">Образование</option>
+                    <option value="Финансы" data="29.9">Финансы</option>
+                    <option value="Юриспруденция" data="19.5">Юриспруденция</option>
+                    <option value="Медицина" data="22.2">Медицина</option>
+                    <option value="Онлайн сервисы" data="23.8">Онлайн сервисы</option>
+                    <option value="Программное обеспечение / IT" data="17.6">Программное обеспечение / IT</option>
+                    <option value="Телеком" data="16.4">Телеком</option>
+                    <option value="Туризм" data="27.2">Туризм</option>
+                    <option value="Недвижимость" data="29.4">Недвижимость</option>
+                    <option value="Авто" data="31.6">Авто</option>
+                </select>
+            </label>
+        </div>
+    </div>
+</form>
+
+<script>
+    
+	$(".calculator input").keyup(function () {
+    $(this).val(thousandSeparator($(this).val().replace(/[^0-9]/g, "")));
+    var yandex = $("[name='yandex']").val().replace(/\s/g, '');
+    var google = $("[name='google']").val().replace(/\s/g, '');
+    var vk = $("[name='vk']").val().replace(/\s/g, '');
+    var priceyandex = $("[name='priceyandex']").val().replace(/\s/g, '');
+    var pricegoogle = $("[name='pricegoogle']").val().replace(/\s/g, '');
+    var pricevk = $("[name='pricevk']").val().replace(/\s/g, '');
+    //var theme = $(".theme option").prop('selected', true).change().attr('data');
+    var theme = "";
+
+    $( ".calculator select option:selected" ).each(function() {
+        theme += $( this ).attr('data') + " ";
+    });
+
+
+
+    if(priceyandex == ''){
+        if(theme == undefined){
+            resultyandex = (yandex / 100 * theme)*50;
+        }else{
+            resultyandex = (yandex / 100 * 25)*50;
+        }
+    }else{
+        if(theme == undefined){
+            resultyandex = (yandex / 100 * theme)*priceyandex;
+        }else{
+            resultyandex = (yandex / 100 * 25)*priceyandex;
+        }
+    }
+
+    if(pricegoogle == ''){
+        if(theme == undefined){
+            resultgoogle = (google / 100 * theme)*50;
+        }else{
+            resultgoogle = (google / 100 * 25)*50;
+        }
+    }else{
+        if(theme == undefined){
+            resultgoogle = (google / 100 * theme)*pricegoogle;
+        }else{
+            resultgoogle = (google / 100 * 25)*pricegoogle;
+        }
+    }
+
+    if(pricevk == ''){
+        if(theme == undefined){
+            resultvk = (vk / 100 * theme)*50;
+        }else{
+            resultvk = (vk / 100 * 25)*50;
+        }
+    }else{
+        if(theme == undefined){
+            resultvk = (vk / 100 * theme)*pricevk;
+        }else{
+            resultvk = (vk / 100 * 25)*pricevk;
+        }
+    }
+
+
+
+    resultSUM = resultyandex+resultgoogle+resultvk;
+    var sumyear = resultSUM*12
+
+
+    if(sumyear || resultSUM){
+        $('.year span').text(thousandSeparator(Math.ceil(sumyear)));
+        $('.month span').text(thousandSeparator(Math.ceil(resultSUM)));
+    }else{
+        $('.year span').text('0');
+        $('.month span').text('0');
+    }
+
+});
+
+
+
+
+$(".calculator select").change(function(){
+    var yandex = $("[name='yandex']").val().replace(/\s/g, '');
+    var google = $("[name='google']").val().replace(/\s/g, '');
+    var vk = $("[name='vk']").val().replace(/\s/g, '');
+
+    var priceyandex = $("[name='priceyandex']").val().replace(/\s/g, '');
+    var pricegoogle = $("[name='pricegoogle']").val().replace(/\s/g, '');
+    var pricevk = $("[name='pricevk']").val().replace(/\s/g, '');
+
+    var theme = "";
+    $( ".calculator select option:selected" ).each(function() {
+        theme += $( this ).attr('data') + " ";
+    });
+
+
+    if(priceyandex == ''){
+        resultyandex = (yandex / 100 * theme)*50;
+    }else{
+        resultyandex = (yandex / 100 * theme)*priceyandex;
+    }
+
+    if(pricegoogle == ''){
+        resultgoogle = (google / 100 * theme)*50;
+    }else{
+        resultgoogle = (google / 100 * theme)*pricegoogle
+    }
+
+
+    if(pricevk == ''){
+        resultvk = (vk / 100 * theme)*50;
+    }else{
+        resultvk = (vk / 100 * theme)*pricevk
+    }
+
+
+    resultSUM = resultyandex+resultgoogle+resultvk;
+    var sumyear = resultSUM*12
+
+
+    if(sumyear || resultSUM){
+        $('.year span').text(thousandSeparator(Math.ceil(sumyear)));
+        $('.month span').text(thousandSeparator(Math.ceil(resultSUM)));
+    }else{
+        $('.year span').text('0');
+        $('.month span').text('0');
+    }
+
+});
+
+var thousandSeparator = function (str) {
+var parts = (str + '').split('.'),
+    main = parts[0],
+    len = main.length,
+    output = '',
+    i = len - 1;
+
+while (i >= 0) {
+    output = main.charAt(i) + output;
+    if ((len - i) % 3 === 0 && i > 0) {
+        output = ' ' + output;
+    }
+    --i;
+}
+
+if (parts.length > 1) {
+    output += '.' + parts[1];
+}
+return output;
+};;
+</script>
