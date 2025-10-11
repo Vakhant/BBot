@@ -27,6 +27,7 @@ img{max-width: 100%;}
     padding: 8px 30px;
     position: absolute;
     bottom: 0; right: 0;
+    font-size: 18px;
 }
 h1,h2,h3,h4, p{margin: 0;}
 input{
@@ -224,6 +225,7 @@ margin-bottom: 10px;
 .h100p{height: 100%;}
 
 .df{display: flex;} .dif{display: inline-flex;} .fdc{flex-direction: column;} .aic{align-items: center;}.aib{align-items: baseline;}.aifs{align-items: flex-start;} .jcc{justify-content: center;}.jcsb{justify-content: space-between;}.fww{flex-wrap: wrap;}
+.f1{flex: 1;}
 .dn{display: none;}
 .dib{display: inline-block;}
 
@@ -327,6 +329,7 @@ margin-bottom: 10px;
     .script_block{white-space: nowrap;}
     input, .select-header, .option{padding: 12px 15px;font-size: 13px;}
     .select_arrow{scale: .8 .5;}
+    .footer_block{width: 100%;}
     
 
 
