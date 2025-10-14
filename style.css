@@ -64,7 +64,7 @@ footer{
 
 h1{font-size: 60px; font-weight: 700; line-height: 1.1;z-index: 1;}
 h2{font-size: 68px; line-height: 1.1;}
-.promo_img{margin-top: -100px;margin-left: -100%;margin-bottom: -200px;z-index: 0;}
+.promo_img{margin-top: 0;margin-left: -100%;margin-bottom: -200px;z-index: 0;}
 .problem_text{width: 440px;}
 .our_solution_img{margin-left: -30px;margin-bottom: -30px;}
 .calc_block{width: 425px;}
@@ -216,11 +216,14 @@ margin-bottom: 10px;
 
 .light_form .select-header, .light_form .option{background-color: #fff; color: rgba(30, 30, 30, 0.5); border: 1px solid rgba(129, 129, 129, 1);}
 
+.paralax{opacity: 0; transform: translateY(100px); transition: .75s;}
+.paralaxed{opacity: 1; transform: translateY(0);}
 
 
 
 .oxa{overflow-x: auto;}
-.pr{position: relative;}
+.pr{position: relative;} .pa{position: absolute;}
+.t0{top:0}.l0{left:0}
 .w100p{width: 100%;}.w50p{width: 50%;}.w30p{width: 30%;}
 .h100p{height: 100%;}
 
