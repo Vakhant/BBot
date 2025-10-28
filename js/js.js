@@ -58,11 +58,11 @@ function initFormValidation(formSelector) {
         
         if (isValid) {
             // Форма валидна, можно отправлять
-            console.log('Форма валидна, отправляем данные');
+            console.log('Form is valid, sending data');
             // Здесь можно добавить AJAX отправку формы
             // $form.submit(); или $.ajax(...)
         } else {
-            console.log('Форма содержит ошибки');
+            console.log('Form contains errors');
             // Показываем все ошибки
             showAllErrors($form);
         }
@@ -129,7 +129,7 @@ function validateEmailField($input) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
     if (email && !emailRegex.test(email)) {
-        showError($input, 'Введите корректный email адрес');
+        showError($input, 'Please enter a valid email address');
         return false;
     } else {
         hideError($input);
@@ -147,7 +147,7 @@ function validateUrlField($input) {
     const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
     
     if (url && !urlRegex.test(url)) {
-        showError($input, 'Введите корректный URL');
+        showError($input, 'Please enter a valid URL');
         return false;
     } else {
         hideError($input);
@@ -201,7 +201,7 @@ function validateField($input) {
     
     // Проверка на обязательное поле
     if ($input.attr('required') && !value) {
-        showError($input, 'Это поле обязательно для заполнения');
+        showError($input, 'This field is required');
         return false;
     }
     
@@ -215,7 +215,7 @@ function validateField($input) {
             // Для поля с валютой проверяем, что есть цифры после $
             const numericValue = value.replace('$', '').replace(/\s/g, '');
             if (!numericValue || !/^\d+$/.test(numericValue)) {
-                showError($input, 'Введите числовое значение');
+                showError($input, 'Please enter a numeric value');
                 return false;
             }
             hideError($input);
@@ -223,7 +223,7 @@ function validateField($input) {
         } else if (placeholder.includes('-') || fieldLabel.includes('Number of visitors')) {
             // Для диапазона проверяем формат
             if (!/^[\d\s-]+$/.test(value)) {
-                showError($input, 'Разрешен только цифры, пробелы и дефис');
+                showError($input, 'Only numbers, spaces and hyphens are allowed');
                 return false;
             }
             hideError($input);
@@ -231,7 +231,7 @@ function validateField($input) {
         } else if (fieldLabel.includes('Business niche')) {
             // Для бизнес-ниши проверяем, что только буквы
             if (!/^[a-zA-Zа-яА-Я\s]+$/.test(value)) {
-                showError($input, 'Разрешены только буквы и пробелы');
+                showError($input, 'Only letters and spaces are allowed');
                 return false;
             }
             hideError($input);
