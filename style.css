@@ -106,7 +106,7 @@ h2{font-size: 68px; line-height: 1.1;}
     opacity: 1;
     pointer-events: auto;
 }
-.connection_to_free_analytics_form{
+.connection_to_free_analytics_form, #thankYouBlock{
     width: 90%;
     max-width: 589px;
     position: fixed;
@@ -115,17 +115,14 @@ h2{font-size: 68px; line-height: 1.1;}
     z-index: 10001;
 }
 
-.connection_to_free_analytics{
+.connection_to_free_analytics, #thankYou{
     position: fixed;
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 1000;
 }
-.connection_to_free_analytics_bg{
+.connection_to_free_analytics_bg, #thankYouBg{
     background-color: #00000090;
     width: 100%;
     height: 100%;
@@ -218,7 +215,6 @@ margin-bottom: 10px;
 
 .paralax{opacity: 0; transform: translateY(100px); transition: .75s;}
 .paralaxed{opacity: 1; transform: translateY(0);}
-
 
 
 .oxa{overflow-x: auto;}

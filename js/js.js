@@ -58,6 +58,7 @@ function initFormValidation(formSelector) {
         
         if (isValid) {
             // Форма валидна, можно отправлять
+            $('#thankYou').fadeIn()
             console.log('Form is valid, sending data');
             // Здесь можно добавить AJAX отправку формы
             // $form.submit(); или $.ajax(...)
