@@ -57,11 +57,8 @@ function initFormValidation(formSelector) {
         });
         
         if (isValid) {
-            // Форма валидна, можно отправлять
-            $('#thankYou').fadeIn()
-            console.log('Form is valid, sending data');
-            // Здесь можно добавить AJAX отправку формы
-            // $form.submit(); или $.ajax(...)
+            // Форма валидна, отправляем данные
+            submitForm($form);
         } else {
             console.log('Form contains errors');
             // Показываем все ошибки
@@ -73,6 +70,57 @@ function initFormValidation(formSelector) {
     
     // Инициализация кнопки (изначально disabled если форма не взаимодействовала)
     updateSubmitButton($form, $submitBtn, formInteracted);
+}
+
+// Функция отправки формы на PHP
+function submitForm($form) {
+    const formData = new FormData();
+    
+    // Собираем данные из всех полей с атрибутом name
+    $form.find('[name]').each(function() {
+        const $field = $(this);
+        const name = $field.attr('name');
+        let value = '';
+        
+        if ($field.is('input[type="text"], input[type="hidden"]')) {
+            value = $field.val().trim();
+        }
+        // Можно добавить обработку других типов полей если понадобится
+        
+        if (name && value !== '') {
+            formData.append(name, value);
+        }
+    });
+    
+    // Добавляем тип формы
+    if ($form.attr('id') === 'CommercialOfferForm') {
+        formData.append('form_type', 'commercial_offer');
+    } else if ($form.attr('id') === 'ConnectToFreeAnalyticsForm') {
+        formData.append('form_type', 'free_analytics');
+    }
+    
+    // Отправляем данные на PHP
+    fetch('send_form.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(result => {
+        if (result === 'success') {
+            // Показываем попап успеха
+            $('#thankYou').fadeIn();
+            // Сбрасываем форму
+            $form[0].reset();
+            // Закрываем модальное окно, если оно открыто
+            $('#ConnectToFreeAnalytics').fadeOut();
+        } else {
+            alert('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.');
+    });
 }
 
 // Включает реальную валидацию для всех полей формы
@@ -285,6 +333,7 @@ function hideError($input) {
     $input.removeClass('error');
     $input.next('.error-message').remove();
 }
+
 document.addEventListener('DOMContentLoaded', function() {
     // Функция расчета потерь
     function calculateLosses() {

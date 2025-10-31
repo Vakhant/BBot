@@ -266,21 +266,21 @@
 			<form id="CommercialOfferForm" class="brr20 df fdc g15" action="">
 				<label for="">
 					<div class="fz18 mb5">Email*</div>
-					<input required placeholder="bbotaimain@gmail.com" type="text">
+					<input name="email" required placeholder="bbotaimain@gmail.com" type="text">
 				</label>
 				<label for="">
 					<div class="fz18 mb5">Website link*</div>
-					<input required placeholder="https://bbotai.com" type="text">
+					<input name="website" required placeholder="https://bbotai.com" type="text">
 				</label>
 				<label for="">
 					<div class="fz18 mb5">Advertising budget*</div>
-					<input required placeholder="$10 000" type="text">
+					<input name="budget" required placeholder="$10 000" type="text">
 				</label>
 				<label for="">
 					<div class="fz18 mb5">Number of visitors per month*</div>
-					<input required placeholder="5 000 - 10 000" type="text">
+					<input name="visitors" required placeholder="5 000 - 10 000" type="text">
 				</label>
-
+			
 				<div class="custom-select">
 					<div class="fz18 mb5">Choose your request*</div>
 					<div class="select-header">
@@ -291,9 +291,9 @@
 						<div class="option selected" data-value="Analytics">Analytics</div>
 						<div class="option" data-value="Blocking">Blocking</div>
 					</div>
-					<input type="hidden" class="value-input" name="custom-select" value="Analytics">
+					<input name="request_type" type="hidden" class="value-input" value="Analytics">
 				</div>
-
+			
 				<button disabled class="btn ma mt30 mb-mt20">Submit a request</button>
 			</form>
 			<p class="tac mt10 clw">You will receive a response within 24 hours.</p>
@@ -327,15 +327,15 @@
 				<h3 class="fz36 mb15">Connect to free analytics</h3>
 				<label for="">
 					<div class="fz18 mb5">Email*</div>
-					<input required placeholder="bbotaimain@gmail.com" type="text">
+					<input name="email" required placeholder="bbotaimain@gmail.com" type="text">
 				</label>
 				<label for="">
 					<div class="fz18 mb5">Website link*</div>
-					<input required placeholder="https://bbotai.com" type="text">
+					<input name="website" required placeholder="https://bbotai.com" type="text">
 				</label>
 				<label for="">
 					<div class="fz18 mb5">Business niche*</div>
-					<input required placeholder="Construction" type="text">
+					<input name="business_niche" required placeholder="Construction" type="text">
 				</label>
 				<button disabled class="btn ma mt30">Submit a request</button>
 				<p class="tac mt10 clw">You will receive a response within 24 hours.</p>
@@ -344,9 +344,7 @@
 	</div>
 
 	<div id="thankYou" class="dn">
-		<div id="thankYouBg">
-		
-		</div>
+		<div onclick="$('#thankYou').fadeOut()" id="thankYouBg"></div>
 		<div id="thankYouBlock" class="p40 df fdc aic bgcbe brr30 mb-p30 mb-pr20 mb-pl20">
 			<div class="fz36 fw700 mb15 mb-fz24">Thank you!</div>
 			<div class="fz24 fw500 mb30 tac mb-fz18">We have received your application and are currently reviewing it.</div>
