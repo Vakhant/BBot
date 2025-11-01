@@ -100,7 +100,7 @@ function submitForm($form) {
     }
     
     // Отправляем данные на PHP
-    fetch('send_form.php', {
+    fetch('../send_form.php', {
         method: 'POST',
         body: formData
     })
